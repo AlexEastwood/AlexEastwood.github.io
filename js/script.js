@@ -2,6 +2,7 @@ const introElement = document.getElementById("intro");
 const lightbox = document.getElementById("lightbox")
 const background = document.getElementById("lightbox-background")
 const mobileCardsElement = document.getElementById("mobile-cards")
+
 let opacity = 0;
 let fadeIn = setInterval(() => {
     if (opacity >= 1) {
