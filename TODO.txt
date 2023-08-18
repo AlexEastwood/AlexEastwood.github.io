@@ -1,4 +1,0 @@
-
-# Add javascript for carousel lightboxes
-# Add links to github projects
-# Background image and styling

@@ -1,33 +1,18 @@
 const introElement = document.getElementById("intro");
-const lightbox = document.getElementById("lightbox")
-const background = document.getElementById("lightbox-background")
-const mobileCardsElement = document.getElementById("mobile-cards")
-
-let opacity = 0;
-let fadeIn = setInterval(() => {
-    if (opacity >= 1) {
-    clearInterval(fadeIn);
-    }
-    introElement.style.opacity = opacity;
-    opacity += 0.01;
-}, 30);
-
-const cards = document.querySelectorAll(".card")
-
-cards.forEach(e => {
-    e.addEventListener("click", openOverlay)
-});
-
-introElement.addEventListener("click", e => {
-    mobileCardsElement.scrollIntoView({
-        behavior: "smooth"
-    })
-})
+const lightbox = document.getElementById("lightbox");
+const background = document.getElementById("lightbox-background");
+const mobileCardsElement = document.getElementById("mobile-cards");
+const desktopCardsElement = document.getElementById("carouselExampleIndicators");
 
 function openOverlay() {
     lightbox.innerHTML = this.innerHTML
     lightbox.style.display = "flex"
-    background.style.display = "block"
+    background.style.display = "flex"
+    if (window.innerWidth > 768) {
+        lightbox.getElementsByClassName("overview")[0].style.display = "none";
+    }
+
+
     lightbox.addEventListener("click", e => {
         e.stopPropagation()
     })
@@ -39,3 +24,47 @@ function closeOverlay(e) {
     lightbox.style.display = "none"
     background.style.display = "none"
 }
+
+let opacity = 0;
+let fadeIn = setInterval(() => {
+    if (opacity >= 1) {
+    clearInterval(fadeIn);
+    }
+    introElement.style.opacity = opacity;
+    opacity += 0.01;
+}, 30);
+
+
+if (window.innerWidth < 768) {
+    introElement.addEventListener("click", e => {
+        mobileCardsElement.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(e => {
+        e.addEventListener("click", openOverlay);
+});
+} else {
+    introElement.addEventListener("click", e => {
+        desktopCardsElement.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+    const cards = document.querySelectorAll(".carousel-item");
+
+    lightbox.style.padding = "1%"
+    lightbox.style.width = "50vw"
+    lightbox.style.height = "unset"
+
+    cards.forEach(e => {
+        e.addEventListener("click", openOverlay);
+    });
+}
+
+
+
+
