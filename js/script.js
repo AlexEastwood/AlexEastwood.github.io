@@ -2,7 +2,7 @@ const introElement = document.getElementById("intro");
 const lightbox = document.getElementById("lightbox");
 const background = document.getElementById("lightbox-background");
 const mobileCardsElement = document.getElementById("mobile-cards");
-const desktopCardsElement = document.getElementById("carouselExampleIndicators");
+const desktopCardsElement = document.getElementById("desktop-carousel");
 
 function openOverlay() {
     lightbox.innerHTML = this.innerHTML
@@ -25,14 +25,18 @@ function closeOverlay(e) {
     background.style.display = "none"
 }
 
-let opacity = 0;
-let fadeIn = setInterval(() => {
-    if (opacity >= 1) {
-    clearInterval(fadeIn);
-    }
-    introElement.style.opacity = opacity;
-    opacity += 0.01;
-}, 30);
+window.addEventListener("load", function () {
+    let opacity = 0;
+    let fadeIn = setInterval(() => {
+        if (opacity >= 1) {
+        clearInterval(fadeIn);
+        }
+        introElement.style.opacity = opacity;
+        opacity += 0.01;
+    }, 20);
+});
+
+
 
 
 if (window.innerWidth < 768) {

@@ -9,13 +9,18 @@ a[class*="carousel-control"] {
 
 body { 
     background: url("../img/portrait.jpg") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
 
     display: flex;
-  }
+}
+
 
 button {
     display: none !important;
@@ -31,6 +36,12 @@ main {
     flex-direction: column;
     background: rgba($background-black, 0.8);
     align-items: center;
+}
+
+h2, h3 {
+    padding-top: 4rem ;
+    color: white !important;
+    text-align: center;
 }
 
 .intro {
@@ -93,9 +104,14 @@ main {
     display: none;
 }
 
+#desktop-carousel {
+    display: none;
+}
+
 .contact {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 
     a>div {
         display: flex;
@@ -130,6 +146,10 @@ main {
       }
 
       #carouselExampleIndicators {
+        display: block;
+    }
+
+    #desktop-carousel {
         display: block;
     }
 
